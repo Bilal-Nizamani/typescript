@@ -1,36 +1,27 @@
 "use strict";
-// let ame: string = 'Bilawal';
-// let a: number = 123
-// let b: string = 'bggg'
-// let c: number = 123
-// let d: number = a * c
-// console.log(ame,a,c/a,c,d)
-// lesson 2
-// let myname: string = 'typescript'
-//can't assing number to string type variable
-// myname = 12312
-// another string can be assinged
-// myname = 'bilal'
-// any can work with any type
-// let newVar: any = 'stinrg'
+// // Lesson 1: Basic Types
+// let name: string = 'Bilawal';
+// let a: number = 123;
+// let b: string = 'bggg';
+// let c: number = 123;
+// let d: number = a * c;
+// console.log(name, a, c / a, c, d);
+// // Lesson 2: Type Inference and Any Type
+// let myName: string = 'typescript';
+// // Uncommenting the line below will result in a type error
+// // myName = 12312;
+// myName = 'bilal';
+// let newVar: any = 'string';
 // newVar = 123;
-//  it's called union type it can be both number or string
 // let speed: string | number = 'asdfaklsjdf';
-// regex type
-// let regex1:RegExp= /\w+/g
-// fucntion with typesscript
-// const  sum = (a:number,b:number) => {
-//     return  a/b
-// }
-// let nreturnedValue: number = sum(123, 123)
-// lesson 3
-// let arr1 = ['one', 1, true]
-// let arr2 = ['one', 'two']
-// //arr2 = arr1  it wont work as arr1 has number string and bolean
-// arr1 = arr1 // this will work but now arr1 will only store string now
-// let arr3:string[] = ['aasdf'] //only string can stored here
-// arr1[0] = 123
-// // const myTyple: [string, number, boolean] = [123,123,'aasdfas',] it won't work because it only accect 3 elemnets and with the types that are defined
+// let regex1: RegExp = /\w+/g;
+// // Lesson 3: Arrays and Tuples
+// let arr1 = ['one', 1, true];
+// let arr2 = ['one', 'two'];
+// // Uncommenting the line below will result in an error
+// // arr2 = arr1;
+// arr1 = arr1;
+// let arr3: string[] = ['aasdf'];
 // // Example 1: Simple Number Array
 // let numbers: number[] = [1, 2, 3, 4, 5];
 // // Example 2: String Array
@@ -62,4 +53,89 @@
 // let evenNumbers: number[] = numbers.filter(num => num % 2 === 0);
 // // Example 10: Reduce Array
 // let sum1: number = numbers.reduce((acc, curr) => acc + curr, 0);
-// object with typescript
+// // Lesson 4: Objects and Types
+// type Guitarist = {
+//     name: string;
+//     active: boolean;
+//     albums: (string | number)[];
+// };
+// let singer1: Guitarist = {
+//     name: 'bilal',
+//     active: false,
+//     albums: [1, 3, 'asldkfj'],
+// };
+// const lumber1 = (guitarist: Guitarist) => {
+//     return `Hello ${guitarist.active}`;
+// };
+// console.log(lumber1(singer1));
+// // Uncommenting the lines below will result in an error
+// // singer1.albums.push(12321);
+// // singer1.albums.push(123);
+// // Lesson 5: Enums and Interfaces
+// enum Grade {
+//     A = 1,
+//     B,
+//     C,
+//     D
+// }
+// interface Programmer {
+//     experience: string;
+//     age?: number;
+//     name: string;
+//     available: boolean;
+// }
+// type StringNumber = string | number;
+// type StringOrNumberArray = (string | number)[];
+// // Lesson 6: Literal Types, Functions, and Type Aliases
+// let userName: 'bilal' | 'hamza';
+// userName = 'bilal';
+// const add = (a: number, b: number, c?: any): void => {
+//     console.log(c ? a + b + c : a + b);
+// };
+// const add2 = (a: number, b: number): number => {
+//     return a + b;
+// };
+// // Uncommenting the line below will result in a type error
+// // add(123, 123, 'bilb');
+// console.log(add2(123, 123));
+// type MathFunction = (a: number, b: number) => number;
+// const multiply: MathFunction = (a, b) => {
+//     return a + b;
+// };
+// console.log(multiply(1, 2));
+// const total = (a: number, ...nums: number[]): number => {
+//     return a + nums.reduce((prev, curr) => prev + curr);
+// };
+// // Uncommenting the line below will result in an error
+// // createError('Some error message');
+// console.log(total(1, 2, 3, 3, 3, 3, 3, 3, 3, 3));
+//  type assertion
+// type one = string
+// type two = string | number
+// type three = string | number | boolean
+// type four = 'four'
+// // Type Assertion Examples
+// // Type 'one' assertion
+// let valueOne: any = 'Hello'; // We have a variable 'valueOne' of type 'any' (could be any type)
+// let assertionOne: one = valueOne as one; // We assert that 'valueOne' is of type 'one'
+// // Type 'two' assertion
+// let valueTwo: any = 123; // 'valueTwo' is of type 'any' (could be any type)
+// let assertionTwo: two = valueTwo as two; // We assert that 'valueTwo' is of type 'two'
+// // Type 'three' assertion
+// let valueThree: any = true; // 'valueThree' is of type 'any' (could be any type)
+// let assertionThree: three = valueThree as three; // We assert that 'valueThree' is of type 'three'
+// // Type 'four' assertion
+// let valueFour: any = 'four'; // 'valueFour' is of type 'any' (could be any type)
+// let assertionFour: four = valueFour as four; // We assert that 'valueFour' is of type 'four'
+// // Alternatively, using angle bracket syntax
+// let assertionOneAlt: one = <one>valueOne; // Same assertion using angle bracket syntax
+// let assertionTwoAlt: two = <two>valueTwo; // Same assertion using angle bracket syntax
+// let assertionThreeAlt: three = <three>valueThree; // Same assertion using angle bracket syntax
+// let assertionFourAlt: four = <four>valueFour; // Same assertion using angle bracket syntax
+// // Note: Type assertion is not type conversion. It's a way to override the type inferred by TypeScript.
+// const elem = document.getElementById('this')as HTMLElement
+// const btn =<HTMLButtonElement>document.getElementById('button') 
+//     btn.onclick = () => {
+//         if (elem.innerHTML !== 'Hello Gandalf') elem.innerHTML = 'Hello Gandalf';
+//         else  elem.innerHTML = 'By Gandalf';
+//     };
